@@ -1,8 +1,9 @@
-# CONTRACT FOR eosnationtps::ath
+# CONTRACT FOR eosnationtps::action
 
-## ACTION NAME: ath
+## ACTION NAME: action
 
 ### Parameters
+
 Input parameters:
 
 * `msg` (string to announce a message)

@@ -4,7 +4,7 @@ using namespace eosio;
 class eosnationtps : public eosio::contract {
   public:
       using contract::contract;
-      void ath(std::string msg) {}
+      void action(std::string msg) {}
 };
 
-EOSIO_ABI( eosnationtps, (ath) )
+EOSIO_ABI( eosnationtps, (action) )

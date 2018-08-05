@@ -14,7 +14,7 @@
  (import "env" "read_action_data" (func $read_action_data (param i32 i32) (result i32)))
  (import "env" "require_auth2" (func $require_auth2 (param i64 i64)))
  (table 2 2 anyfunc)
- (elem (i32.const 0) $__wasm_nullptr $_ZN12eosnationtps3athENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE)
+ (elem (i32.const 0) $__wasm_nullptr $_ZN12eosnationtps6actionENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE)
  (memory $0 1)
  (data (i32.const 4) "\c0a\00\00")
  (data (i32.const 16) "onerror\00")
@@ -537,7 +537,7 @@
    (br_if $label$13
     (i64.ne
      (get_local $2)
-     (i64.const 3916442825952067584)
+     (i64.const 3617211062870343680)
     )
    )
    (i32.store offset=20
@@ -575,7 +575,7 @@
    )
   )
  )
- (func $_ZN12eosnationtps3athENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $_ZN12eosnationtps6actionENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
  )
  (func $_ZN5eosio14execute_actionI12eosnationtpsS1_JNSt3__112basic_stringIcNS2_11char_traitsIcEENS2_9allocatorIcEEEEEEEbPT_MT0_FvDpT1_E (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)

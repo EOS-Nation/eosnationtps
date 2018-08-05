@@ -2,7 +2,7 @@
 
 ## 1. Create Custom Permissions
 
-```
-$ cleos set account permission <ACCOUNT> eosnationtps <PUBLIC KEY> active -p <ACCOUNT>@active
-$ cleos set action permission <ACCOUNT> eosnationtps ath eosnationtps
+```bash
+$ cleos set account permission "<ACCOUNT>" eosnationtps "<PUBLIC KEY>" active -p <ACCOUNT>@active
+$ cleos set action permission "<ACCOUNT>" eosnationtps action eosnationtps
 ```
