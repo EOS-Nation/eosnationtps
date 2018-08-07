@@ -4,7 +4,7 @@
 
 ## Scope of project
 
-- [x] Activate at precisely 8h00, 8th UTC, 2018 (1533711600000 time)
+- [x] Activate at precisely 8h00, 8th UTC, 2018 (1533715200000 time)
 - [x] Queue multiple transactions (25 transactions)
 - [x] Execute multiple requests concurently (5 requests)
 - [x] Each transaction contains multiple actions (25 actions)
@@ -38,8 +38,8 @@ EOSNATIONTPS_INTERVAL_SECONDS = 3
 EOSNATIONTPS_QUEUE = 5
 EOSNATIONTPS_TRANSACTIONS = 25
 
-# UTC 8/8/8 = 1533711600000
-EOSNATIONTPS_START_TIME = 1533711600000
+# UTC 8/8/8 = 1533715200000
+EOSNATIONTPS_START_TIME = 1533715200000
 
 # DEBUG mode
 # When true: set all values to 1 & start time to now

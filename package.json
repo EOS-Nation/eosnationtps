@@ -14,7 +14,8 @@
     "cron": "1.x",
     "d3-queue": "*",
     "dotenv": "*",
-    "eosjs": "16.x"
+    "eosjs": "16.x",
+    "moment": "2.*"
   },
   "devDependencies": {
     "@types/cron": "*",

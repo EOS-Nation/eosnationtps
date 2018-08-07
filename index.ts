@@ -1,5 +1,6 @@
 import * as d3 from 'd3-queue';
 import { CronJob } from "cron";
+import moment from "moment";
 import * as config from "./config";
 import * as counters from "./src/counters";
 import { pushAction } from "./src/actions";
@@ -12,7 +13,9 @@ logging.introduction()
  */
 new CronJob(`*/${config.EOSNATIONTPS_INTERVAL_SECONDS} * * * * *`, () => {
     const q = d3.queue(config.EOSNATIONTPS_QUEUE);
-    if (Date.now() >= config.EOSNATIONTPS_START_TIME) {
+    const now = Date.now();
+
+    if (now >= config.EOSNATIONTPS_START_TIME) {
         for (let i = 0; i < config.EOSNATIONTPS_TRANSACTIONS; ++i) {
             q.defer(pushAction);
         }
@@ -31,6 +34,7 @@ new CronJob(`*/${config.EOSNATIONTPS_INTERVAL_SECONDS} * * * * *`, () => {
             }) + '\n');
         });
     } else {
-        process.stderr.write("patience... it's not time yet\n")
+        const startTime = moment(config.EOSNATIONTPS_START_TIME).fromNow()
+        process.stderr.write(`patience... starting ${startTime}\n`)
     }
 }, () => {}, true)
