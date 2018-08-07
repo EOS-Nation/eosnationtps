@@ -7,12 +7,20 @@
   "author": "Denis Carriere <denis@eosnation.io>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "tsc && node index.js"
   },
   "dependencies": {
     "cron": "1.x",
     "d3-queue": "*",
     "dotenv": "*",
-    "eosjs": "14.x"
+    "eosjs": "16.x"
+  },
+  "devDependencies": {
+    "@types/cron": "*",
+    "@types/d3-queue": "*",
+    "@types/dotenv": "*",
+    "@types/node": "*",
+    "tslint": "*",
+    "typescript": "*"
   }
 }
