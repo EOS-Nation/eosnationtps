@@ -2,27 +2,19 @@
 
 ![image](https://user-images.githubusercontent.com/550895/43689837-11f3c534-98ce-11e8-9d0c-98f78f25922c.png)
 
-## Intentation
+## Scope of project
 
-- [x] Start firing at precisely 8h00, 8th UTC
-- [x] Each transaction will contain 50 or more actions (bulk actions per each 1 transaction)
-- [x] Each script will "queue" multiple transactions and run concurrently (firing all at the same time)
-- [x] Script will run at every 10 second bursts (or every UTC minute), that way we can sync all scripts on the same UTC second
+- [x] Activate at precisely 8h00, 8th UTC, 2018 (1533711600000 time)
+- [x] Queue multiple transactions (25 transactions)
+- [x] Execute multiple requests concurently (5 requests)
+- [x] Each transaction contains multiple actions (25 actions)
+- [x] Iterate over a specific timed intervals (3 seconds)
+- [x] Add custom message with random nonce (`EOS Nation TPS #eos888 (nonce)`)
+- [x] Allow the use of custom permissions (`eosnationtps`)
 
-## 1. Create Custom Permissions
+## 1. Install
 
-```bash
-$ cleos set account permission "<ACCOUNT>" eosnationtps "<PUBLIC KEY>" active -p <ACCOUNT>@active
-$ cleos set action permission "<ACCOUNT>" eosnationtps action eosnationtps
-```
-
-## 2. Push a transaction
-
-```bash
-$ cleos push action eosnationtps action '["Hello World"]' -p <ACCOUNT>@eosnationtps
-```
-
-## 3. Install
+This applicaiton requires [NodeJS](https://nodejs.org/en/download/) to be installed.
 
 ```
 $ git clone https://github.com/EOS-Nation/eosnationtps.git
@@ -30,7 +22,7 @@ $ cd eosnationtps
 $ npm install
 ```
 
-## 4. Set up environment variables
+## 2. Set up environment variables
 
 Add/edit the `.env` file.
 
@@ -52,16 +44,33 @@ EOSNATIONTPS_START_TIME = 1533711600000
 # DEBUG mode
 # When true: set all values to 1 & start time to now
 # When false: values are not changed
-EOSNATIONTPS_DEBUG = true
+EOSNATIONTPS_DEBUG = false
 
 # User Credentials (Private)
 EOSIO_ACTOR = "<ACCOUNT NAME>"
-EOSIO_PERMISSION = "eosnationtps"
+EOSIO_PERMISSION = "active"
 EOSIO_KEY_PROVIDER = "<PRIVATE KEY>"
 ```
 
-## 5. Start
+## 3. Start
 
 ```
 $ npm start
+```
+
+## Extras
+
+### Create Custom Permissions
+
+```bash
+$ cleos set account permission "<ACCOUNT>" eosnationtps "<PUBLIC KEY>" active -p <ACCOUNT>@active
+$ cleos set action permission "<ACCOUNT>" eosnationtps action eosnationtps
+```
+
+## Testing
+
+### Push a test transaction
+
+```bash
+$ cleos push action eosnationtps action '["Hello World"]' -p <ACCOUNT>@eosnationtps
 ```
