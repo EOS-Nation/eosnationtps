@@ -58,6 +58,8 @@ EOSIO_KEY_PROVIDER = "<PRIVATE KEY>"
 $ npm start
 ```
 
+![image](https://user-images.githubusercontent.com/550895/43799960-ee4a2a70-9a5c-11e8-874a-8fdfc4edef6f.png)
+
 ## Extras
 
 ### Create Custom Permissions
