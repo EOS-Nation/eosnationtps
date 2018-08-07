@@ -2,6 +2,8 @@
 
 ![image](https://user-images.githubusercontent.com/550895/43689837-11f3c534-98ce-11e8-9d0c-98f78f25922c.png)
 
+[Inspired by Thomas Cox #eos888](https://www.youtube.com/watch?v=QF5F7EwsHBQ)
+
 ## Scope of project
 
 - [x] Activate at precisely 8h00, 8th UTC, 2018 (1533715200000 time)
