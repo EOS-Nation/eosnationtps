@@ -1,5 +1,6 @@
 import * as d3 from 'd3-queue';
 import { CronJob } from "cron";
+import chalk from "chalk";
 import moment from "moment";
 import * as config from "./config";
 import * as counters from "./src/counters";
@@ -19,22 +20,8 @@ new CronJob(`*/${config.EOSNATIONTPS_INTERVAL_SECONDS} * * * * *`, () => {
         for (let i = 0; i < config.EOSNATIONTPS_TRANSACTIONS; ++i) {
             q.defer(pushAction);
         }
-        q.awaitAll((errors) => {
-            // if (errors) { throw error; }
-            const time = Date.now();
-
-            // Logging
-            process.stdout.write(JSON.stringify({
-                time,
-                actor: config.actor,
-                permission: config.permission,
-                actions: counters.actions,
-                transactions: counters.transactions,
-                errors: counters.errors,
-            }) + '\n');
-        });
     } else {
         const startTime = moment(config.EOSNATIONTPS_START_TIME).fromNow()
-        process.stderr.write(`patience... starting ${startTime}\n`)
+        console.warn(chalk.yellow(`patience... starting ${startTime}`))
     }
 }, () => {}, true)

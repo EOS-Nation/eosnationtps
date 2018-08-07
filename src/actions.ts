@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import * as config from "../config";
 import * as counters from "./counters";
 import { eos } from "./eos";
@@ -40,9 +41,15 @@ export async function pushAction(callback: any) {
         await eos.transaction({actions})
         counters.setActions(counters.actions + actions.length);
         counters.setTransactions(counters.transactions + 1);
+
+        if (counters.transactions === 1 || counters.actions % config.EOSNATIONTPS_QUEUE === 0) {
+            console.error(chalk.green(`successfuly pushed ${counters.actions} actions / ${counters.transactions} transctions`));
+        }
         callback(null);
     } catch (e) {
-        if (e) { console.error(e); }
+        if (e && counters.errors % config.EOSNATIONTPS_QUEUE === 0) {
+            console.error(chalk.red(JSON.parse(e).error.what));
+        }
         counters.setErrors(counters.errors + 1);
         callback(null);
     }

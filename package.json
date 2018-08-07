@@ -11,6 +11,7 @@
     "start": "tsc && node index.js"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
     "cron": "1.x",
     "d3-queue": "*",
     "dotenv": "*",

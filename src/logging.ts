@@ -17,8 +17,9 @@ App Settings
 ------------
 Message: ${config.EOSNATIONTPS_MSG}
 Intervals (seconds): ${config.EOSNATIONTPS_INTERVAL_SECONDS}
-Bulk Actions: ${config.EOSNATIONTPS_ACTIONS}
-Queued Transactions: ${config.EOSNATIONTPS_QUEUE}
+Actions per transaction: ${config.EOSNATIONTPS_ACTIONS}
+Transactions per interval: ${config.EOSNATIONTPS_TRANSACTIONS}
+Max Queue: ${config.EOSNATIONTPS_QUEUE}
 Start time (UTC): ${config.EOSNATIONTPS_START_TIME}
 
 User Settings
