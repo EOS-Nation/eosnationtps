@@ -48,7 +48,7 @@ export async function pushAction(callback: any) {
         callback(null);
     } catch (e) {
         if (e && counters.errors % config.EOSNATIONTPS_QUEUE === 0) {
-            console.error(chalk.red(JSON.parse(e).error.what));
+            console.error(e);
         }
         counters.setErrors(counters.errors + 1);
         callback(null);
