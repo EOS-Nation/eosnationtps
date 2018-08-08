@@ -28,7 +28,7 @@ $ npm install
 
 Add/edit the `.env` file.
 
-```conf
+```ini
 # EOSIO Network
 EOSIO_HTTP_ENDPOINT = "https://api.eosn.io"
 EOSIO_CHAIN_ID = "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
