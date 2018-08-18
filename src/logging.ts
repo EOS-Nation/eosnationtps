@@ -20,7 +20,7 @@ Intervals (seconds): ${config.EOSNATIONTPS_INTERVAL_SECONDS}
 Actions per transaction: ${config.EOSNATIONTPS_ACTIONS}
 Transactions per interval: ${config.EOSNATIONTPS_TRANSACTIONS}
 Max Queue: ${config.EOSNATIONTPS_QUEUE}
-Start time (UTC): ${config.EOSNATIONTPS_START_TIME}
+Start block number: ${config.EOSNATIONTPS_START_BLOCK_NUMBER}
 
 User Settings
 -------------

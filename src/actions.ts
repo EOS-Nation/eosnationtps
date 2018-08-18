@@ -2,6 +2,7 @@ import chalk from "chalk";
 import * as config from "../config";
 import * as counters from "./counters";
 import { eos } from "./eos";
+import { randomNumber } from "./utils"
 
 /**
  * Create Bulk Actions
@@ -53,13 +54,4 @@ export async function pushAction(callback: any) {
         counters.setErrors(counters.errors + 1);
         callback(null);
     }
-}
-
-/**
- * Generate Random Number
- *
- * @returns {number}
- */
-export function randomNumber() {
-    return Math.round(Math.random() * 10000)
 }

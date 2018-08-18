@@ -1,27 +1,30 @@
 import * as d3 from 'd3-queue';
 import { CronJob } from "cron";
 import chalk from "chalk";
-import moment from "moment";
 import * as config from "./config";
-import * as counters from "./src/counters";
 import { pushAction } from "./src/actions";
 import * as logging from "./src/logging";
+import { getBlockNumber } from "./src/utils"
 
 logging.introduction()
+let active = false
+let blockNumber = 0
 
 /**
  * Executes concurrently bulk actions on a timed interval
  */
-new CronJob(`*/${config.EOSNATIONTPS_INTERVAL_SECONDS} * * * * *`, () => {
+new CronJob(`*/${config.EOSNATIONTPS_INTERVAL_SECONDS} * * * * *`, async () => {
     const q = d3.queue(config.EOSNATIONTPS_QUEUE);
-    const now = Date.now();
+    if (!active) {
+        blockNumber = await getBlockNumber(config.httpEndpoint)
+    }
 
-    if (now >= config.EOSNATIONTPS_START_TIME) {
+    if (active || blockNumber >= config.EOSNATIONTPS_START_BLOCK_NUMBER) {
         for (let i = 0; i < config.EOSNATIONTPS_TRANSACTIONS; ++i) {
             q.defer(pushAction);
         }
     } else {
-        const startTime = moment(config.EOSNATIONTPS_START_TIME).fromNow()
-        console.warn(chalk.yellow(`patience... starting ${startTime}`))
+        const diffBlock = config.EOSNATIONTPS_START_BLOCK_NUMBER - blockNumber
+        console.warn(chalk.yellow(`patience... starting in ${diffBlock} blocks`))
     }
 }, () => {}, true)
