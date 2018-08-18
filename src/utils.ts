@@ -1,4 +1,3 @@
-import { httpEndpoint } from "../config"
 import { GetInfo } from "../types/get_info"
 import axios from "axios";
 
@@ -17,7 +16,7 @@ import axios from "axios";
  * //   "head_block_producer": "eosio"
  * // }
  */
-export async function getInfo(api = httpEndpoint): Promise<GetInfo | null> {
+export async function getInfo(api: string): Promise<GetInfo | null> {
     try {
         const url = api + "/v1/chain/get_info"
         const {data} = await axios.get(url)
@@ -34,7 +33,7 @@ export async function getInfo(api = httpEndpoint): Promise<GetInfo | null> {
  * @return {Promise<number|null>} Head Block Number
  * await getBlockNumber() //=> 11000000
  */
-export async function getBlockNumber(api = httpEndpoint) {
+export async function getBlockNumber(api: string) {
     const info = await getInfo(api)
     if (info) { return info.head_block_num }
     return null
