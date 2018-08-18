@@ -14,15 +14,24 @@ const q = d3.queue(config.EOSNATIONTPS_QUEUE);
  * Executes concurrently bulk actions on a timed interval
  */
 new CronJob(`*/${config.EOSNATIONTPS_INTERVAL_SECONDS} * * * * *`, async () => {
-    const head_block_num = await getBlockNumber(config.EOSIO_HTTP_ENDPOINT_SECONDARY)
+    if (!active) {
+        const head_block_num = await getBlockNumber(config.EOSIO_HTTP_ENDPOINT_SECONDARY)
 
-    // Not Block Number
-    if (head_block_num === null || head_block_num < config.EOSNATIONTPS_START_BLOCK_NUMBER) {
-        const diffBlock = config.EOSNATIONTPS_START_BLOCK_NUMBER - head_block_num
-        console.warn(chalk.yellow(`patience... starting in ${diffBlock} blocks`))
+        // Connection issue
+        if (head_block_num === null) {
+            console.warn(chalk.red(`connection issue with ${config.EOSIO_HTTP_ENDPOINT_SECONDARY}`))
+        }
+        // Not Block Number
+        else if (head_block_num < config.EOSNATIONTPS_START_BLOCK_NUMBER) {
+            const diffBlock = config.EOSNATIONTPS_START_BLOCK_NUMBER - head_block_num
+            console.warn(chalk.yellow(`patience... starting in ${diffBlock} blocks`))
+        } else {
+            active = true
+        }
     }
+
     // Send all transactions to queue
-    else {
+    if (active) {
         for (let i = 0; i < config.EOSNATIONTPS_TRANSACTIONS; ++i) {
             q.defer(pushAction);
         }
