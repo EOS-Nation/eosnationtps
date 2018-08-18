@@ -16,6 +16,7 @@ export let EOSNATIONTPS_ACTIONS = Number(process.env.EOSNATIONTPS_ACTIONS || 25)
 export let EOSNATIONTPS_QUEUE = Number(process.env.EOSNATIONTPS_QUEUE || 5);
 export let EOSNATIONTPS_TRANSACTIONS = Number(process.env.EOSNATIONTPS_TRANSACTIONS || 25);
 export let EOSNATIONTPS_START_BLOCK_NUMBER = Number(process.env.EOSNATIONTPS_START_BLOCK_NUMBER) || 1;
+export let EOSNATIONTPS_BLOCK_PRODUCER = process.env.EOSNATIONTPS_BLOCK_PRODUCER || "eosnationftw";
 
 // User Crendentials (Private)
 export const actor = process.env.EOSIO_ACTOR;
