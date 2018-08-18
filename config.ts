@@ -7,7 +7,7 @@ const envFilepath = path.join(__dirname, ".env")
 
 // EOSIO network
 export const EOSIO_HTTP_ENDPOINT = process.env.EOSIO_HTTP_ENDPOINT || 'https://api.eosn.io'
-export const EOSIO_HTTP_ENDPOINT_SECONDARY = process.env.EOSIO_HTTP_ENDPOINT || 'https://api.eosn.io'
+export const EOSIO_HTTP_ENDPOINT_SECONDARY = process.env.EOSIO_HTTP_ENDPOINT_SECONDARY || 'https://api.eosn.io'
 export const EOSIO_CHAIN_ID = process.env.EOSIO_CHAIN_ID || 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
 export const httpEndpoint = EOSIO_HTTP_ENDPOINT
 export const chainId = EOSIO_CHAIN_ID
