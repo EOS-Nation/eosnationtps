@@ -17,22 +17,27 @@ import axios from "axios";
  * //   "head_block_producer": "eosio"
  * // }
  */
-export async function getInfo(api = httpEndpoint): Promise<GetInfo> {
-    const url = api + "/v1/chain/get_info"
-    const {data} = await axios.get(url)
-    return data
+export async function getInfo(api = httpEndpoint): Promise<GetInfo | null> {
+    try {
+        const url = api + "/v1/chain/get_info"
+        const {data} = await axios.get(url)
+        return data
+    } catch (e) {
+        return null;
+    }
 }
 
 /**
  * Get Head Block Number
  *
  * @param {string} [api = httpEndpoint] EOSIO HTTP endpoint API
- * @return {Promise<number>} Head Block Number
+ * @return {Promise<number|null>} Head Block Number
  * await getBlockNumber() //=> 11000000
  */
 export async function getBlockNumber(api = httpEndpoint) {
     const info = await getInfo(api)
-    return info.head_block_num
+    if (info) { return info.head_block_num }
+    return null
 }
 
 /**

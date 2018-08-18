@@ -42,15 +42,10 @@ export async function pushAction(callback: any) {
         await eos.transaction({actions})
         counters.setActions(counters.actions + actions.length);
         counters.setTransactions(counters.transactions + 1);
-
-        if (counters.transactions === 1 || counters.actions % config.EOSNATIONTPS_QUEUE === 0) {
-            console.error(chalk.green(`successfuly pushed ${counters.actions} actions / ${counters.transactions} transctions`));
-        }
+        console.error(chalk.green(`successfuly pushed ${counters.actions} actions / ${counters.transactions} transctions`));
         callback(null);
     } catch (e) {
-        if (e && counters.errors % config.EOSNATIONTPS_QUEUE === 0) {
-            console.error(e);
-        }
+        console.error(e);
         counters.setErrors(counters.errors + 1);
         callback(null);
     }

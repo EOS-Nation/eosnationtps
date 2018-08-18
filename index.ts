@@ -13,7 +13,14 @@ const q = d3.queue(config.EOSNATIONTPS_QUEUE);
  * Executes concurrently bulk actions on a timed interval
  */
 new CronJob(`*/${config.EOSNATIONTPS_INTERVAL_SECONDS} * * * * *`, async () => {
-    const {head_block_num, head_block_producer} = await getInfo(config.httpEndpoint)
+    const info = await getInfo(config.EOSIO_HTTP_ENDPOINT_SECONDARY)
+
+    if (info === null) {
+        console.warn(chalk.red(`error... connection issue with ${config.EOSIO_HTTP_ENDPOINT_SECONDARY}`))
+        return;
+    }
+
+    const {head_block_num, head_block_producer} = info
 
     // Not Block Number
     if (head_block_num < config.EOSNATIONTPS_START_BLOCK_NUMBER) {
