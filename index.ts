@@ -28,6 +28,7 @@ new CronJob(`*/${config.EOSNATIONTPS_INTERVAL_SECONDS} * * * * *`, async () => {
         console.warn(chalk.yellow(`patience... starting in ${diffBlock} blocks`))
     // Not Block Producer
     } else if (head_block_producer !== config.EOSNATIONTPS_BLOCK_PRODUCER) {
+        q.abort()
         console.warn(chalk.yellow(`patience... waiting for ${config.EOSNATIONTPS_BLOCK_PRODUCER}`))
     }
     // Send all transactions to queue
