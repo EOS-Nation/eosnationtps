@@ -7,7 +7,6 @@ const envFilepath = path.join(__dirname, ".env")
 
 // EOSIO network
 export const EOSIO_HTTP_ENDPOINT = process.env.EOSIO_HTTP_ENDPOINT || 'https://api.eosn.io'
-export const EOSIO_HTTP_ENDPOINT_SECONDARY = process.env.EOSIO_HTTP_ENDPOINT_SECONDARY || 'https://api.eosn.io'
 export const EOSIO_CHAIN_ID = process.env.EOSIO_CHAIN_ID || 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
 export const httpEndpoint = EOSIO_HTTP_ENDPOINT
 export const chainId = EOSIO_CHAIN_ID
@@ -19,7 +18,6 @@ export let EOSNATIONTPS_ACTIONS = Number(process.env.EOSNATIONTPS_ACTIONS || 25)
 export let EOSNATIONTPS_QUEUE = Number(process.env.EOSNATIONTPS_QUEUE || 5);
 export let EOSNATIONTPS_TRANSACTIONS = Number(process.env.EOSNATIONTPS_TRANSACTIONS || 25);
 export let EOSNATIONTPS_START_BLOCK_NUMBER = Number(process.env.EOSNATIONTPS_START_BLOCK_NUMBER) || 1;
-export let EOSNATIONTPS_BLOCK_PRODUCER = process.env.EOSNATIONTPS_BLOCK_PRODUCER || "eosnationftw";
 
 // User Crendentials (Private)
 export const actor = process.env.EOSIO_ACTOR;

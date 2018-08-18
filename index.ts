@@ -15,11 +15,11 @@ const q = d3.queue(config.EOSNATIONTPS_QUEUE);
  */
 new CronJob(`*/${config.EOSNATIONTPS_INTERVAL_SECONDS} * * * * *`, async () => {
     if (!active) {
-        const head_block_num = await getBlockNumber(config.EOSIO_HTTP_ENDPOINT_SECONDARY)
+        const head_block_num = await getBlockNumber(config.EOSIO_HTTP_ENDPOINT)
 
         // Connection issue
         if (head_block_num === null) {
-            console.warn(chalk.red(`connection issue with ${config.EOSIO_HTTP_ENDPOINT_SECONDARY}`))
+            console.warn(chalk.red(`connection issue with ${config.EOSIO_HTTP_ENDPOINT}`))
         }
         // Not Block Number
         else if (head_block_num < config.EOSNATIONTPS_START_BLOCK_NUMBER) {
